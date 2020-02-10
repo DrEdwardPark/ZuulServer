@@ -1,0 +1,25 @@
+server:
+  port: 9090
+    
+spring:
+  application:
+    name: VRINITY-zuul-server
+
+#Config Server      
+  cloud:
+    config:
+      uri: http://localhost:8888 
+      name: VRINITY-config-server
+
+#Eureka Client   
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:9091/eureka/
+      
+#Zuul Routing    
+zuul:
+  routes:
+    login: #routing id
+      path: /login/** #zuul context root
+      serviceId: VRINITY-login #spring application name
